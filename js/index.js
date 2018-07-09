@@ -1,2 +1,4 @@
-let x = 50;
-export default x;
+export function x() {
+	return 50;
+}
+export var y = "welcome";

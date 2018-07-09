@@ -5,20 +5,27 @@ var _jquery = require('jquery');
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
+var _index = require('./index');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _jquery2.default)(function () {
 	console.dir(_jquery2.default);
+	console.log((0, _index.x)());
+	console.log(_index.y);
 });
 
-},{"jquery":18}],2:[function(require,module,exports){
+},{"./index":2,"jquery":18}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+	value: true
 });
-var x = 50;
-exports.default = x;
+exports.x = x;
+function x() {
+	return 50;
+}
+var y = exports.y = "welcome";
 
 },{}],3:[function(require,module,exports){
 'use strict';
@@ -65,6 +72,7 @@ var App = function (_Component) {
 }(_react.Component);
 
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
+console.log("welcome react ");
 
 },{"react":28,"react-dom":25}],4:[function(require,module,exports){
 /**
