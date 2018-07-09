@@ -33,6 +33,11 @@ module.exports = function(grunt) {
             './css/main.css': './css/sass/root.scss'
           }
       }
+    },
+    clean: {
+      build: {
+        src: ['./build/','./css/main.css']
+      }
     }
   });
 
@@ -40,6 +45,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   //run Tasks
-  grunt.registerTask('all', ['browserify:dist','sass','concat']);
+  grunt.registerTask('all', ['clean','browserify:dist','sass','concat']);
 };
