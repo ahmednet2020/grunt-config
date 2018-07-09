@@ -6,8 +6,8 @@ module.exports = function(grunt) {
         separator: '\n',
       },
       dist: {
-        src: ['js/*.js'],
-        dest: 'build/app.js',
+        src: ['css/*.css'],
+        dest: 'build/app.css',
       }
     },
     browserify: {
@@ -26,6 +26,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-browserify');
   //run Tasks
-  grunt.registerTask('all', ['browserify:dist']);
+  grunt.registerTask('all', ['browserify:dist','concat']);
 
 };
