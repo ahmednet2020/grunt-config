@@ -5,7 +5,7 @@ module.exports = function(grunt) {
       options: {
         separator: '\n',
       },
-      dist: {
+      css: {
         src: ['css/*.css'],
         dest: 'build/app.css',
       }
