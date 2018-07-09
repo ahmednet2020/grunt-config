@@ -1,0 +1,6 @@
+/*start navbar*/
+$nav-color:blue;
+nav
+{
+	@include link($nav-color);
+}

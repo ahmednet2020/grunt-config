@@ -1,9 +1,12 @@
+'use strict';  
+const sass = require('node-sass');
 module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     concat: {
       options: {
         separator: '\n',
+        stripBanners:false
       },
       css: {
         src: ['css/*.css'],
@@ -19,13 +22,24 @@ module.exports = function(grunt) {
           transform: [["babelify"]],
         }
       }
+    },
+    sass: {
+      options: {
+          implementation: sass,
+          sourceMap: false
+      },
+      dist: {
+          files: {
+            './css/main.css': './css/sass/root.scss'
+          }
+      }
     }
   });
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-sass');
   //run Tasks
-  grunt.registerTask('all', ['browserify:dist','concat']);
-
+  grunt.registerTask('all', ['browserify:dist','sass','concat']);
 };
