@@ -16,7 +16,7 @@ module.exports = function(grunt) {
           'build/module.js': ['js/*js']
         },
         options: {
-          transform: [["babelify", { "presets": ["env","react"]}]],
+          transform: [["babelify"]],
         }
       }
     }
