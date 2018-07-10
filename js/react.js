@@ -1,3 +1,5 @@
+import "babel-polyfill";
+import 'raf/polyfill';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 class App extends Component
