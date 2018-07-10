@@ -1,8 +1,12 @@
 'use strict';  
 const sass = require('node-sass');
 module.exports = function(grunt) {
+  //load all grunt plugin
+  require('load-grunt-tasks')(grunt);
   // Project configuration.
   grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'),
+    //concat plugin config
     concat: {
       options: {
         separator: '\n',
@@ -13,20 +17,24 @@ module.exports = function(grunt) {
         dest: 'build/app.css',
       }
     },
+    //browserify plugin config
+    //for babel and react
     browserify: {
       dist: {
         files: {
-          'build/module.js': ['js/*js']
+          'build/module.min.js': ['js/*.js']
         },
         options: {
           transform: [["babelify"]],
         }
       }
     },
+    //sass plugin config
     sass: {
       options: {
           implementation: sass,
-          sourceMap: false
+          sourceMap: false,
+          outputStyle: 'compressed'
       },
       dist: {
           files: {
@@ -34,18 +42,35 @@ module.exports = function(grunt) {
           }
       }
     },
+    //clean plugin config
     clean: {
       build: {
         src: ['./build/','./css/main.css']
       }
+    },
+    //uglify plugin config
+    uglify: {
+      options: {
+        sourceMap: true
+      },
+      dist: {
+        files: {
+          './build/module.min.js': ['./build/module.min.js']
+        }
+      }
+    },
+    //watch plugin config
+    watch: {
+      css: {
+        files: ['./css/**'],
+        tasks: ['sass','concat']
+      },
+      js: {
+        files: ['./js/**'],
+        tasks: ['browserify:dist','uglify']
+      },
     }
   });
-
-  // Load the plugin that provides the "uglify" task.
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-browserify');
-  grunt.loadNpmTasks('grunt-sass');
-  grunt.loadNpmTasks('grunt-contrib-clean');
   //run Tasks
-  grunt.registerTask('default', ['clean','browserify:dist','sass','concat']);
+  grunt.registerTask('default', ['clean','sass','concat','browserify:dist','uglify','watch']);
 };

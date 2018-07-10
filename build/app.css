@@ -1,7 +1,8 @@
 /*start app style*/
 body
 {
-	font-size: 15px
+	font-size: 10px;
+	background-color: red;
 }
 /*start index style*/
 
@@ -9,13 +10,4 @@ header
 {
 	background-color: #ff0;
 }
-/*start sass*/
-/*start mixin*/
-/*start index scss*/
-html, body {
-  font-size: 50px;
-  color: green; }
-
-/*start navbar*/
-nav:hover, nav:active {
-  color: blue; }
+html,body{font-size:20px;color:#000}nav:hover,nav:active{color:blue}

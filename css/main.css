@@ -1,10 +1,1 @@
-/*start sass*/
-/*start mixin*/
-/*start index scss*/
-html, body {
-  font-size: 50px;
-  color: green; }
-
-/*start navbar*/
-nav:hover, nav:active {
-  color: blue; }
+html,body{font-size:20px;color:#000}nav:hover,nav:active{color:blue}
